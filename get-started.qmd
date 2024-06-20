@@ -1,0 +1,292 @@
+---
+title: "Get Started with Git &<br>![](images/github-octocat.png){height=3em}"
+subtitle: Adapted from [*Happy Git and GitHub for the useR*](https://happygitwithr.com) 
+author: Jadey Ryan
+date: 2024-06-20
+format: 
+  revealjs:
+    width: 1600
+    height: 900
+    embed-resources: true
+    theme: style.scss
+    highlight-style: a11y-dark
+    slide-number: true
+    lightbox: true
+revealjs-plugins:
+  - pointer
+---
+
+## Ch 1: Why Git? Why GitHub?
+
+::: incremental
+-   **Git**: free & open source **version control system**.
+
+    -   Like "Track Changes" in MS Word, but for all files in the project
+        folder.
+
+-   **GitHub**: hosting service/platform for Git-based projects on the internet
+    (aka RStudio projects in our case).
+
+    -   Like Sharepoint, allows collaboration.
+
+-   For software developers, researchers, [government
+    agencies](https://government.github.com/community/), [your future
+    self]{style="color:darkmagenta;font-size: larger;font-weight: bolder;text-decoration: underline;"},
+    and anyone who needs a robust version control system and collaboration!
+
+-   Git & GitHub are not the same thing, like R & RStudio are not the same
+    thing.
+:::
+
+## Ch 6: Install Git
+
+In the Terminal in RStudio, run:
+
+``` {.bash filename="Terminal"}
+which git
+## /usr/bin/git
+```
+
+If you see something like `git: command not found`, you need to install Git.
+
+See <https://happygitwithr.com/install-git#install-git>.
+
+## Ch 7: Introduce yourself to Git
+
+Use the email associated with your GitHub account.
+
+::: panel-tabset
+## Terminal
+
+``` {.bash filename="Terminal"}
+git config --global user.name "Jane Doe"
+git config --global user.email "jane@example.com"
+git config --global --list
+```
+
+## R Console
+
+``` {.r filename="Console"}
+## install if needed (do this exactly once):
+## install.packages("usethis")
+
+library(usethis)
+use_git_config(user.name = "Jane Doe", user.email = "jane@example.org")
+```
+:::
+
+## Ch 9: Personal access tokens for HTTPS
+
+::: incremental
+1.  Generate token from <https://github.com/settings/tokens> or:
+
+    ``` r
+    usethis::create_github_token(description = "work-laptop")
+    ```
+
+2.  Select expiration period, ensure selected scopes include "repo", "user",
+    "workflow", then click "Generate token".
+
+3.  Copy the token and save it somewhere safe. Treat it like a password.
+
+4.  Securely store it in RStudio with the `gitcreds` package:
+
+    ``` r
+    gitcreds::gitcreds_set()
+    ```
+
+    \
+
+    ``` r
+    ? Enter password or token:     ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    -> Adding new credentials...
+    -> Removing credentials from cache...
+    -> Done.
+    ```
+:::
+
+## Ch 11 & 12: Connect Git, GitHub, RStudio
+
+1.  Make a test repo on GitHub. Initialize with "Add a README file".
+
+    ![](images/github-new-repo.png){height="700"}
+
+## Ch 11 & 12: Connect Git, GitHub, RStudio
+
+2.  Copy the HTTPS Clone URL.
+
+    ![](images/github-copy-url.png)
+
+## Ch 11 & 12: Connect Git, GitHub, RStudio
+
+::: columns
+::: {.column width="50%"}
+3.  Clone the test repo to your computer:
+
+    a.  RStudio \> File \> New Project \> Version Control \> Git
+
+    b.  Paste the URL copied from GitHub into "Repository URL".
+
+    c.  Leave the default project directory name the same as the GitHub repo
+        name.
+
+    d.  Intentionally choose where to save this project locally.
+
+    e.  Click "Create Project".
+:::
+
+::: {.column width="50%"}
+::: r-stack
+![](images/rstudio-create-project.png){.fragment .fade-out group="rstudio"}
+
+![](images/rstudio-create-from-vc.png){.fragment .fade-in-then-out group="rstudio"}
+
+![](images/rstudio-clone-repo.png){.fragment .fade-in-then-out group="rstudio"}
+:::
+:::
+:::
+
+## Ch 11 & 12: Connect Git, GitHub, RStudio
+
+::: columns
+::: {.column width="40%"}
+4.  Make local changes, save, commit, and push to GitHub:
+
+    a.  Modify the `README.md`. Save.
+
+    b.  **Stage** the changed file(s).
+
+    c.  **Commit** the staged changes (with a good commit message).
+
+    d.  Repeat a-c as much as you'd like, then **Push** the commit(s).
+
+    e.  Check the changes made it to the remote (i.e., repo on GitHub).
+:::
+
+::: {.column width="60%"}
+::: r-stack
+![](images/rstudio-git-popup.png){.fragment .fade-out group="rstudio-git"}
+
+![](images/rstudio-git-commit.png){.fragment .fade-in-then-out group="rstudio-git"}
+
+![](images/rstudio-git-push.png){.fragment .fade-in-then-out group="rstudio-git"}
+
+![](images/github-updated-readme.png){.fragment .fade-in-then-out group="rstudio-git"}
+:::
+:::
+:::
+
+## Ch 11 & 12: Connect Git, GitHub, RStudio
+
+5.  Clean up:
+
+    -   Quit the RStudio project.
+
+    -   Delete the project folder.
+
+    -   Delete the remote on GitHub. Settings \> Danger Zone \> Delete this
+        repository \> do as it asks.
+
+::: callout-important
+## Problems with Chapters 11 & 12?
+
+Go to [Chapter 13 Detect Git from
+RStudio](https://happygitwithr.com/rstudio-see-git) and/or [Chapter 14 RStudio,
+Git, GitHub Hell](https://happygitwithr.com/troubleshooting).
+:::
+
+## Ch 20. Repo, commit, diff
+
+::: incremental
+-   **repository** or **repo**: set of files in a folder
+
+-   **clone**: local version of a repo
+
+-   **remote**: the repo on GitHub
+
+-   **stage**: prepare a file or files for a commit
+
+-   **commit**: snapshot of all files in the project
+
+-   **diff**: differences between commits
+
+-   **push**: uploads all commits to GitHub
+:::
+
+## Excuse Me, Do You Have a Moment to Talk About Version Control?
+
+Figures from [(Bryan
+2018)](https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1399928)
+
+::: r-stack
+![](images/bryan-2018-fig-1.png){.fragment .fade-out group="bryan-2018"}
+
+![](images/bryan-2018-fig-2.png){.fragment .fade-in-then-out group="bryan-2018"}
+
+![](images/bryan-2018-fig-3.png){.fragment .fade-in-then-out group="bryan-2018"}
+
+![](images/bryan-2018-fig-5.png){.fragment .fade-in-then-out group="bryan-2018"}
+:::
+
+## Workflow for WaSHI SOS repo
+
+<https://github.com/WA-Department-of-Agriculture/washi-sos>
+
+Clone `washi-sos` to your computer (step 3 of Ch 11 & 12) using this repo URL:
+
+``` bash
+https://github.com/WA-Department-of-Agriculture/washi-sos.git
+```
+
+Click the `Pull` button in the Git pane of RStudio to copy changes from the
+remote repo on GitHub to your local repo.
+
+## More resources
+
+-   [Git Cheat Sheet from
+    GitHub](https://training.github.com/downloads/github-git-cheat-sheet.pdf)
+
+-   [GitHub training website](https://try.github.io/)
+
+-   [Software Carpentry Version Control with
+    Git](https://swcarpentry.github.io/git-novice/01-basics.html)
+
+-   [OpenScapes GitHub
+    Strategies](https://openscapes.github.io/series/core-lessons/github/)
+
+-   [Open Scientific Code using Git and GitHub
+    workshop](https://open-source-for-researchers.github.io/open-source-workshop/)
+
+-   [Git for Humans slides from Alice
+    Bartlett](https://speakerdeck.com/alicebartlett/git-for-humans)
+
+**For educational fun:**
+
+-   [GitHub illustrated series by Allison Horst and Julie
+    Lowndes](https://openscapes.org/blog/2022-05-27-github-illustrated-series/)
+
+-   [Interactive graphic of the Git
+    system](https://ndpsoftware.com/git-cheatsheet.html)
+
+-   [dangitgit](https://dangitgit.com/) or [ohshitgit](https://ohshitgit.com/)
+
+-   [Oh My Git! interactive game](https://ohmygit.org/)
+
+## Discussion
+
+-   Questions from the group?
+
+::: incremental
+-   Integrating Luis' work on the management data
+
+    -   Option 1: Luis works in a separate repo with a "final" dataset folder
+        that I manually or automatically pull in to the master `washi-sos` repo?
+        WSDA or WaSHI organization?
+
+    -   Option 2: Luis works in `washi-sos` with push/pull access. Careful to
+        communicate and avoid merge conflicts.
+
+-   GitHub vs Sharepoint vs Shared Drives: too many copies to maintain
+
+-   More GitHub trainings?
+:::

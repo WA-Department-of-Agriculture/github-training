@@ -1,0 +1,58 @@
+/*-- scss:defaults --*/
+
+// fonts
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+
+// color
+$theme-green: #023B2C;
+$theme-blue: #335C67;
+$theme-gold: #FCB040;
+$theme-cream: #f2f0e6;
+
+// font family
+$presentation-heading-font: 'Lato', sans-serif !default;
+$font-family-sans-serif: 'Atkinson Hyperlegible', 'Nunito', sans-serif;
+$font-family-monospace: 'Source Code Pro', monospace !default;
+
+// font size
+$presentation-heading-font-weight: 800;
+$presentation-h1-font-size: 2.2em;
+$presentation-h2-font-size: 1.7em;
+$presentation-h3-font-size: 1.4em;
+$presentation-h4-font-size: 1.1em;
+
+// font color
+$presentation-heading-color: $theme-green;
+
+// code
+$code-block-font-size: 0.8em;
+$code-block-border-color: $theme-green;
+
+// bg colours
+$body-color: darken( $theme-green, 15% );
+$link-color: $theme-blue;
+$link-color-hover: darken( $link-color, 15% );
+$body-bg: $theme-cream;
+
+/*-- scss:rules --*/
+
+section.has-dark-background a, section.has-dark-background a:hover {
+  color: $body-bg;
+}
+
+.reveal code {
+    color: lighten( $theme-green, 7% );
+    background-color: rgba(0,0,0,0);
+    white-space: pre-wrap;
+}
+
+.code-with-filename .code-with-filename-file {
+    background-color: hsla(0,0%,13%,1);
+    color: white;
+}
+
+.reveal a:not([role="tab"]) {
+  text-decoration: underline !important;
+}
