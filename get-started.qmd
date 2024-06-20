@@ -44,8 +44,9 @@ In the Terminal in RStudio, run:
 
 ``` {.bash filename="Terminal"}
 which git
-## /usr/bin/git
 ```
+
+You should see something like: `/usr/bin/git` or `/mingw64/bin/git`
 
 If you see something like `git: command not found`, you need to install Git.
 
@@ -56,14 +57,6 @@ See <https://happygitwithr.com/install-git#install-git>.
 Use the email associated with your GitHub account.
 
 ::: panel-tabset
-## Terminal
-
-``` {.bash filename="Terminal"}
-git config --global user.name "Jane Doe"
-git config --global user.email "jane@example.com"
-git config --global --list
-```
-
 ## R Console
 
 ``` {.r filename="Console"}
@@ -73,6 +66,22 @@ git config --global --list
 library(usethis)
 use_git_config(user.name = "Jane Doe", user.email = "jane@example.org")
 ```
+
+## Terminal
+
+``` {.bash filename="Terminal"}
+git config --global user.name "Jane Doe"
+git config --global user.email "jane@example.com"
+git config --global --list
+```
+:::
+
+::: callout-tip
+## macOS users
+
+If you get an error, try installing XCode command line tools by following these instructions: <https://happygitwithr.com/install-git#macos>.
+
+Restart RStudio and try again.
 :::
 
 ## Ch 9: Personal access tokens for HTTPS
@@ -89,13 +98,15 @@ use_git_config(user.name = "Jane Doe", user.email = "jane@example.org")
 
 3.  Copy the token and save it somewhere safe. Treat it like a password.
 
-4.  Securely store it in RStudio with the `gitcreds` package:
+4.  Securely store it in RStudio with the `gitcreds` package.
+
+    Run this in the console
 
     ``` r
     gitcreds::gitcreds_set()
     ```
-
-    \
+    
+    to get this prompt for your token (not your login password):
 
     ``` r
     ? Enter password or token:     ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
