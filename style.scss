@@ -48,6 +48,10 @@ section.has-dark-background a, section.has-dark-background a:hover {
     white-space: pre-wrap;
 }
 
+.reveal div.sourceCode pre code {
+    min-height: fit-content !important;
+}
+
 .code-with-filename .code-with-filename-file {
     background-color: hsla(0,0%,13%,1);
     color: white;

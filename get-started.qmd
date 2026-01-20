@@ -40,17 +40,38 @@ revealjs-plugins:
 
 ## Ch 6: Install Git
 
-In the Terminal in RStudio, run:
+:::: {.columns}
+
+::: {.column width="60%"}
+1. Install Git from <https://git-scm.com/install>.
+
+2. Close and re-open RStudio.
+
+3. Check that it's installed in the Terminal in RStudio by running:
 
 ``` {.bash filename="Terminal"}
-which git
+git --version
 ```
 
-You should see something like: `/usr/bin/git` or `/mingw64/bin/git`
+::: callout-note
 
-If you see something like `git: command not found`, you need to install Git.
+You should see something like: `git version 2.37.1.windows.1`
 
-See <https://happygitwithr.com/install-git#install-git>.
+If you see something like `git: command not found`, Git was not successfully installed.
+
+See <https://happygitwithr.com/install-git#install-git> for more help.
+
+:::
+
+:::
+
+::: {.column width="40%"}
+4. Check if the Git executable path is found in `Tools` > `Global Options` > `Git/SVN`.
+
+![](images/rstudio-global-options.png)
+:::
+
+::::
 
 ## Ch 7: Introduce yourself to Git
 
